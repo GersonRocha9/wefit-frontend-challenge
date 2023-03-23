@@ -1,2 +1,6 @@
+export { CartButton } from './CartButton'
+export { CatalogItem } from './CatalogItem'
+export { Header } from './Header'
+export { Menu } from './Menu'
 export { Spinner } from './Spinner'
 export { Typography } from './Typography'

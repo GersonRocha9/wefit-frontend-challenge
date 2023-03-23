@@ -1,11 +1,11 @@
-import { ContentContainer } from './styles'
+import { Header } from '../../components'
+import { Container } from './styles'
 
 export function Cart() {
   return (
-    <>
-      <ContentContainer>
-        <h1>Cart</h1>
-      </ContentContainer>
-    </>
+    <Container>
+      <Header />
+      <h1>Cart</h1>
+    </Container>
   )
 }

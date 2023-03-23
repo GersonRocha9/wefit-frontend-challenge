@@ -20,5 +20,5 @@ export const Typography = ({ children, ...props }: TypographyProps) => (
 Typography.defaultProps = {
   weight: 400,
   size: 16,
-  color: '#000',
+  color: '#fff',
 }

@@ -11,7 +11,7 @@ import { Typography } from '../Typography'
 // import { HTMLAttributes } from "react";
 import { useNavigate } from 'react-router-dom'
 
-// import { ICartItem } from "../../@types/coffee";
+// import { ICartItem } from "../../@types/movie";
 
 // interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
 //   cartItems: ICartItem[];

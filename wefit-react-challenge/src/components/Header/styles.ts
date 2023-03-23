@@ -2,11 +2,6 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   width: 100%;
-
-  img {
-    width: 85px;
-    cursor: pointer;
-  }
 `
 
 export const ContentContainer = styled.div`
@@ -22,7 +17,7 @@ export const ContentContainer = styled.div`
 export const CartContainer = styled.div`
   display: flex;
   gap: 10px;
-  alignitems: center;
+  align-items: center;
   cursor: pointer;
 `
 
