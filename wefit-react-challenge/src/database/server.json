@@ -37,14 +37,6 @@
       "image": "https://wefit-react-web-test.s3.amazonaws.com/eternals.png"
     }
   ],
-  "cart": [
-    {
-      "id": 5,
-      "title": "Morbius",
-      "price": 1.5,
-      "image": "https://wefit-react-web-test.s3.amazonaws.com/morbius-1.png",
-      "quantity": 1
-    }
-  ],
+  "cart": [],
   "orders": []
 }
