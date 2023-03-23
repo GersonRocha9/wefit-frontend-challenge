@@ -1,41 +1,28 @@
-import { useEffect, useState } from 'react'
+/* eslint-disable prettier/prettier */
 import { Header, Menu, Spinner } from '../../components'
 
+import { useContext } from 'react'
 import { useTheme } from 'styled-components'
-import { IMovie } from '../../@types/movie'
-import { api } from '../../services'
+import { MovieContextProps } from '../../@types/movie'
+import { MovieContext } from '../../contexts'
 import { Container } from './styles'
 
 export function Home() {
-  const [moviesList, setMoviesList] = useState<IMovie[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  // CONTEXT
+  const { movieList, cartItems, isLoading, handleAddToCart } = useContext(
+    MovieContext
+  ) as MovieContextProps
+
+  // THEME CONTEXT
   const theme = useTheme()
-
-  const getMoviesFromApi = async () => {
-    try {
-      const response = await api.get('/products')
-      const data = response.data
-      setMoviesList(data)
-      setIsLoading(false)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    getMoviesFromApi()
-  }, [])
 
   return (
     <Container>
-      <Header />
+      <Header cartItems={cartItems} />
       {isLoading ? (
         <Spinner size={40} color={theme.colors.white} />
       ) : (
-        <Menu
-          moviesList={moviesList}
-          // onAddToCart={handleAddToCart}
-        />
+        <Menu moviesList={movieList} onAddToCart={handleAddToCart} />
       )}
     </Container>
   )

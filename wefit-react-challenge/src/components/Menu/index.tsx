@@ -1,18 +1,15 @@
+import { ICartItem, IMovie } from '../../@types/movie'
 import { Container, ContentContainer } from './styles'
 
-import { CatalogItem } from '../../components'
-// import { ICartItem } from '../../@types/movie'
 import { HTMLAttributes } from 'react'
-import { IMovie } from '../../@types/movie'
+import { CatalogItem } from '../../components'
 
 interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   moviesList: IMovie[]
-  // onAddToCart?: (movie: ICartItem) => void
+  onAddToCart: (movie: ICartItem) => void
 }
 
-export const Menu = ({ moviesList }: MenuProps) => {
-  // THEME HOOK
-
+export const Menu = ({ moviesList, onAddToCart }: MenuProps) => {
   return (
     <Container>
       <ContentContainer>
@@ -20,7 +17,7 @@ export const Menu = ({ moviesList }: MenuProps) => {
           <CatalogItem
             key={movie.id}
             movie={movie}
-            // onAddToCart={(movie: ICartItem) => onAddToCart(movie)}
+            onAddToCart={(movie: ICartItem) => onAddToCart(movie)}
           />
         ))}
       </ContentContainer>

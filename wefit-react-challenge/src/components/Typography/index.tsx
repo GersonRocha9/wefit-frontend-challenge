@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   weight?: 400 | 600 | 700
-  size?: 12 | 14 | 16 | 20
+  size?: 12 | 14 | 16 | 20 | 24
   color?: string
 }
 

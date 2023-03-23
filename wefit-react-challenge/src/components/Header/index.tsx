@@ -6,18 +6,17 @@ import {
   Image,
 } from './styles'
 
-import bagIcon from '../../assets/bagIcon.svg'
-import { Typography } from '../Typography'
-// import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ICartItem } from '../../@types/movie'
+import bagIcon from '../../assets/bagIcon.svg'
+import { Typography } from '../../components'
 
-// import { ICartItem } from "../../@types/movie";
+interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
+  cartItems: ICartItem[]
+}
 
-// interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
-//   cartItems: ICartItem[];
-// }
-
-export const Header = () => {
+export const Header = ({ cartItems }: HeaderProps) => {
   // ROUTER
   const navigate = useNavigate()
 
@@ -40,10 +39,10 @@ export const Header = () => {
             </Typography>
 
             <Typography size={12} weight={600} color="#999">
-              0 itens
+              {cartItems.length} {cartItems.length > 1 ? 'itens' : 'item'}
             </Typography>
           </CartInfoContainer>
-          <Image src={bagIcon} alt="Bag Icon" />
+          <Image src={bagIcon} alt="Ícone de bolsa representando o carrinho" />
         </CartContainer>
       </ContentContainer>
     </HeaderContainer>

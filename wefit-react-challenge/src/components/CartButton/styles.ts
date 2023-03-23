@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.button`
+interface ContainerButtonProps {
+  isClickedToCart: boolean
+}
+
+export const Container = styled.button<ContainerButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,9 +16,14 @@ export const Container = styled.button`
   border: none;
   border-radius: 6px;
   transition: 0.2s;
-  background-color: ${({ theme }) => theme.colors.blue};
+
+  background-color: ${({ theme, isClickedToCart }) =>
+    isClickedToCart ? theme.colors.green : theme.colors.blue};
+
   text-transform: uppercase;
-  cursor: pointer;
+
+  cursor: ${({ isClickedToCart }) =>
+    isClickedToCart ? 'not-allowed' : 'pointer'};
 
   &:hover {
     transition: 0.2s;
