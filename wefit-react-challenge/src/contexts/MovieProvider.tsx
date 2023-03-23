@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from 'react'
 import { ICartItem, IMovie, MovieContextProps } from '../@types/movie'
 
 import { api } from '../services'
+import { calculateTotalPrice } from '../utils'
 
 export const MovieContext = createContext({} as MovieContextProps)
 
@@ -72,6 +73,32 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
+  function removeAllCartItems() {
+    cartItems.forEach((item) => {
+      handleRemoveItemFromCart(item.id)
+    })
+  }
+
+  const handleCreateNewOrder = async () => {
+    const order = {
+      items: cartItems.map((item) => ({
+        title: item.title,
+        quantity: item.quantity,
+        price: item.price,
+        image: item.image,
+      })),
+
+      totalToPay: calculateTotalPrice(cartItems),
+    }
+
+    await api.post('/orders', order)
+
+    setTimeout(() => {
+      removeAllCartItems()
+      window.location.href = '/confirmed'
+    }, 2000)
+  }
+
   useEffect(() => {
     getMovieFromApi()
     handleGetMoviesFromCart()
@@ -86,6 +113,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
         handleAddToCart,
         handleRemoveItemFromCart,
         handleChangeQuantity,
+        handleCreateNewOrder,
       }}
     >
       {children}

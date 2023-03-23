@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Cart, Home } from '../pages'
+import { Cart, ConfirmedBuy, Home } from '../pages'
 
 export const AppRoutes = () => {
   return (
@@ -7,6 +7,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/confirmed" element={<ConfirmedBuy />} />
       </Routes>
     </BrowserRouter>
   )

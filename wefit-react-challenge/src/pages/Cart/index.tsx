@@ -15,43 +15,16 @@ import { useTheme } from 'styled-components'
 import { MovieContextProps } from '../../@types/movie'
 import noCartItems from '../../assets/nothingHere.svg'
 import { MovieContext } from '../../contexts'
-import { api } from '../../services'
 import { calculateTotalPrice } from '../../utils'
 
 export function Cart() {
   // CONTEXT
-  const { cartItems, handleRemoveItemFromCart } = useContext(
-    MovieContext
-  ) as MovieContextProps
+  const { cartItems, handleRemoveItemFromCart, handleCreateNewOrder } =
+    useContext(MovieContext) as MovieContextProps
   const theme = useTheme()
 
   // ROUTER
   const navigate = useNavigate()
-
-  function removeAllCartItems() {
-    cartItems.forEach((item) => {
-      handleRemoveItemFromCart(item.id)
-    })
-  }
-
-  async function handleCreateNewOrder() {
-    const order = {
-      cartItems: cartItems.map((item) => ({
-        title: item.title,
-        quantity: item.quantity,
-        price: item.price,
-      })),
-
-      totalToPay: calculateTotalPrice(cartItems),
-    }
-
-    await api.post('/orders', order)
-
-    setTimeout(() => {
-      removeAllCartItems()
-      navigate('/')
-    }, 2000)
-  }
 
   return (
     <Container>

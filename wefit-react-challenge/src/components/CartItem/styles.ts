@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   gap: 16px;
   width: 100%;
   max-width: 902px;
-  padding: 24px;
+  padding: 0 24px;
 `
 
 export const CardMovieImage = styled.img`

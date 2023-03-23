@@ -38,22 +38,5 @@
     }
   ],
   "cart": [],
-  "orders": [
-    {
-      "cartItems": [
-        {
-          "title": "Shang-chi",
-          "quantity": 1,
-          "price": 30.99
-        },
-        {
-          "title": "Batman",
-          "quantity": 1,
-          "price": 21.9
-        }
-      ],
-      "totalToPay": "52,89",
-      "id": 1
-    }
-  ]
+  "orders": []
 }

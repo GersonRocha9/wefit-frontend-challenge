@@ -20,4 +20,5 @@ export interface MovieContextProps {
   handleAddToCart: (movie: ICartItem) => Promise<void>
   handleRemoveItemFromCart: (id: number) => Promise<void>
   handleChangeQuantity: (id: number, quantity: number) => Promise<void>
+  handleCreateNewOrder: () => Promise<void>
 }
