@@ -47,6 +47,10 @@ export const HeaderCartContainer = styled.header`
   text-transform: uppercase;
   align-self: flex-start;
   padding: 0 28px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const FooterCartContainer = styled.footer`
@@ -63,6 +67,16 @@ export const FooterCartContainer = styled.footer`
     font-size: 14px;
     margin-right: 8px;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    .total {
+      align-self: flex-end;
+      margin-right: 40px;
+    }
+  }
 `
 
 export const ConfirmOrderButton = styled.button`
@@ -74,11 +88,15 @@ export const ConfirmOrderButton = styled.button`
   transition: 0.2s;
   background-color: ${({ theme }) => theme.colors.blue};
   text-transform: uppercase;
-  cursor: pointer;
 
   &:hover {
     transition: 0.2s;
     filter: brightness(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 80%;
   }
 `
 

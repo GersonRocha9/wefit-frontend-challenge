@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
 import { ICartItem, IMovie, MovieContextProps } from '../@types/movie'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 
 import { api } from '../services'
 import { calculateTotalPrice } from '../utils'
@@ -108,6 +108,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
     <MovieContext.Provider
       value={{
         isLoading,
+
         movieList,
         cartItems,
         handleAddToCart,

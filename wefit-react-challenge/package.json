@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "server": "json-server --watch src/mocks/server.json",
+    "server": "json-server --watch src/database/server.json",
     "preview": "vite preview"
   },
   "dependencies": {

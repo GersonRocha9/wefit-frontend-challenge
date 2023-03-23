@@ -10,13 +10,13 @@ import {
 /* eslint-disable prettier/prettier */
 import { CartItem, Header, Typography } from '../../components'
 
+import { MovieContext } from '../../contexts'
+import { MovieContextProps } from '../../@types/movie'
+import { calculateTotalPrice } from '../../utils'
+import noCartItems from '../../assets/nothingHere.svg'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
-import { MovieContextProps } from '../../@types/movie'
-import noCartItems from '../../assets/nothingHere.svg'
-import { MovieContext } from '../../contexts'
-import { calculateTotalPrice } from '../../utils'
 
 export function Cart() {
   // CONTEXT
@@ -93,8 +93,9 @@ export function Cart() {
                 weight={700}
                 size={24}
                 color={theme.colors.background}
+                className="total"
               >
-                <span>Total: </span>
+                <span>Total </span>
                 {`R$ ${calculateTotalPrice(cartItems)}`}
               </Typography>
             </FooterCartContainer>

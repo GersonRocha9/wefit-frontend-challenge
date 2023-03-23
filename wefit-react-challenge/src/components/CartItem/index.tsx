@@ -1,12 +1,19 @@
+import {
+  CardContainer,
+  CardContent,
+  CardMovieImage,
+  ColumnContainer,
+  MobileCardContainer,
+  RowContainer,
+} from './styles'
 import { DeleteButton, SelectQuantityInput, Typography } from '../../components'
-import { CardContainer, CardContent, CardMovieImage } from './styles'
 
-import { useState } from 'react'
-import { useTheme } from 'styled-components'
 import { ICartItem } from '../../@types/movie'
 import { handleConvertPriceToBRL } from '../../utils'
+import { useState } from 'react'
+import { useTheme } from 'styled-components'
 
-interface CardCoffeeProps {
+interface CardMovieProps {
   movie: ICartItem
   onRemoveCartItem: (id: number) => void
 }
@@ -14,7 +21,7 @@ interface CardCoffeeProps {
 export function CartItem({
   movie: { id, title, price, image, quantity },
   onRemoveCartItem,
-}: CardCoffeeProps) {
+}: CardMovieProps) {
   const theme = useTheme()
   const [updatedItemPrice, setUpdatedItemPrice] = useState(price)
 
@@ -23,26 +30,73 @@ export function CartItem({
   }
 
   return (
-    <CardContainer>
-      <CardMovieImage src={image} alt={title} />
+    <>
+      <CardContainer>
+        <CardMovieImage src={image} alt={title} />
 
-      <CardContent>
-        <Typography weight={700} size={14} color={theme.colors.background}>
-          {title}
-        </Typography>
+        <CardContent>
+          <Typography weight={700} size={14} color={theme.colors.background}>
+            {title}
+          </Typography>
+
+          <Typography weight={700} size={16} color={theme.colors.background}>
+            {handleConvertPriceToBRL(price)}
+          </Typography>
+        </CardContent>
+
+        <SelectQuantityInput value={quantity} onChange={handleChangeQuantity} />
 
         <Typography weight={700} size={16} color={theme.colors.background}>
-          {handleConvertPriceToBRL(price)}
+          {handleConvertPriceToBRL(updatedItemPrice * quantity)}
         </Typography>
-      </CardContent>
 
-      <SelectQuantityInput value={quantity} onChange={handleChangeQuantity} />
+        <DeleteButton onClick={() => onRemoveCartItem(id)} />
+      </CardContainer>
 
-      <Typography weight={700} size={16} color={theme.colors.background}>
-        {handleConvertPriceToBRL(updatedItemPrice * quantity)}
-      </Typography>
+      <MobileCardContainer>
+        <ColumnContainer>
+          <CardMovieImage src={image} alt={title} />
+        </ColumnContainer>
 
-      <DeleteButton onClick={() => onRemoveCartItem(id)} />
-    </CardContainer>
+        <ColumnContainer
+          style={{
+            flex: 1,
+          }}
+        >
+          <CardContent>
+            <Typography weight={700} size={14} color={theme.colors.background}>
+              {title}
+            </Typography>
+
+            <Typography weight={700} size={16} color={theme.colors.background}>
+              {handleConvertPriceToBRL(price)}
+            </Typography>
+
+            <DeleteButton onClick={() => onRemoveCartItem(id)} />
+          </CardContent>
+
+          <RowContainer>
+            <SelectQuantityInput
+              value={quantity}
+              onChange={handleChangeQuantity}
+            />
+
+            <div>
+              <Typography weight={700} size={14} color={theme.colors.gray}>
+                Subtotal
+              </Typography>
+
+              <Typography
+                weight={700}
+                size={16}
+                color={theme.colors.background}
+              >
+                {handleConvertPriceToBRL(updatedItemPrice * quantity)}
+              </Typography>
+            </div>
+          </RowContainer>
+        </ColumnContainer>
+      </MobileCardContainer>
+    </>
   )
 }
