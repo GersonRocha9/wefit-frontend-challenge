@@ -34,9 +34,3 @@ export const CardButtonsContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
-
-export const Separator = styled.div`
-  width: 100%;
-  height: 1px;
-  background: ${({ theme }) => theme.colors.green};
-`

@@ -5,6 +5,7 @@ import {
   Container,
   FooterCartContainer,
   HeaderCartContainer,
+  Separator,
 } from './styles'
 /* eslint-disable prettier/prettier */
 import { CartItem, Header, Typography } from '../../components'
@@ -78,6 +79,8 @@ export function Cart() {
                 onRemoveCartItem={handleRemoveItemFromCart}
               />
             ))}
+
+            <Separator />
 
             <FooterCartContainer>
               <ConfirmOrderButton onClick={handleCreateNewOrder}>

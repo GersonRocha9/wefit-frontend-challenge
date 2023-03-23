@@ -81,3 +81,10 @@ export const ConfirmOrderButton = styled.button`
     filter: brightness(1.1);
   }
 `
+
+export const Separator = styled.div`
+  width: 100%;
+  max-width: 902px;
+  height: 1px;
+  background: ${({ theme }) => theme.colors.gray};
+`
