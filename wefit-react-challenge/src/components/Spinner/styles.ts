@@ -13,6 +13,8 @@ export const SpinnerContainer = styled.div<SpinnerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 330px;
+
   > div {
     width: ${({ size }) => size || 40}px;
     height: ${({ size }) => size || 40}px;
